@@ -7,7 +7,7 @@ Database software but each time you run it it gets slower and slower  ~meme
 # Building
 
 ````
-dmd *.d
+dmd violet.d c* d* server.d
 ````
 
 # Running
