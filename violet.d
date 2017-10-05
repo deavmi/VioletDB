@@ -1,8 +1,7 @@
 import std.stdio;
 import database;
-import 
-utilities.stringTools;
-import server;
+import utilities.stringTools;
+import network.server;
 import std.File;
 
 void main()
