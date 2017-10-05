@@ -1,8 +1,8 @@
-import std.stdio;
-import database.database;
-import utilities.stringTools;
-import network.server;
-import std.File;
+import std.stdio : writeln, write, readln;
+import database.database : Database;
+import misc.stringTools : chomp;
+import network.server : startServer;
+import std.File : exists;
 
 void main()
 {
