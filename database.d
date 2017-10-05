@@ -1,4 +1,4 @@
-module database;
+module database.database;
 
 import std.stdio;
 import dbMisc.general;
