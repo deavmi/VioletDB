@@ -1,5 +1,5 @@
 import std.stdio;
-import database;
+import database.database;
 import utilities.stringTools;
 import network.server;
 import std.File;
