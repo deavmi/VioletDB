@@ -1,9 +1,9 @@
 module database;
 
 import std.stdio;
-import dbMisc_general;
-import dbMisc_types;
-import dbMisc_KeyStuff;
+import dbMisc.general;
+import dbMisc.types;
+import dbMisc.KeyStuff;
 
 class Database
 {
