@@ -9,7 +9,7 @@ Database software but each time you run it it gets slower and slower  ~meme
 Yes, for some reason I am using Windows today. Hate this thing. But it works good with D.
 
 ````
-dmd *.d dbMisc/* utilities/* -O violet.exe
+dmd *.d dbMisc/* utilities/* network/* database/* -O violet.exe
 ````
 
 # Running
