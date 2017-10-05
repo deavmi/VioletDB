@@ -2,7 +2,7 @@ module network.server;
 
 import std.socket;
 import core.Thread;
-import database;
+import database.database;
 import std.stdio;
 
 Connection[] connections;
