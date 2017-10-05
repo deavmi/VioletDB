@@ -18,6 +18,7 @@ void main()
 		//testing code
 		Database db = new Database(filename);
 		db.addKey("nasme","string");
+		writeln("ey");
 		startServer(db, port);
 	}
 	else
