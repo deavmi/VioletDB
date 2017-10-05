@@ -6,8 +6,10 @@ Database software but each time you run it it gets slower and slower  ~meme
 
 # Building
 
+Yes, for some reason I am using Windows today. Hate this thing. But it works good with D.
+
 ````
-dmd violet.d c* d* server.d
+dmd *.d -O violet.exe
 ````
 
 # Running
