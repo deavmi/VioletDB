@@ -1,0 +1,12 @@
+typeID (1 byte), keyName (n-bytes+1 (for null-terminator)), value (n-bytes)
+
+00000010, 00000001 00000001 00000000, 00000001 00000001 00000001 00000000
+
+oh it's a byte.
+read next bytes and add to character array but stop when byte is 0.
+Now, because it's a byte read next byte (and that's the value).
+now end.
+
+oh it's a string
+read next bytes and add to character array but stop when byte is 0.
+now read next bytes and add to character array but stop when byte is 0.
