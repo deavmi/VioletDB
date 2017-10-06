@@ -2,25 +2,37 @@ module network.server;
 
 import std.socket;
 import database.database : Database;
-import std.stdio;
-import network.Connection;
-import jobs.JobManager;
+import std.stdio : writeln;
+import network.Connection : Connection;
+import jobs.JobManager : JobManager;
+import jobs.Executor : Executor;
 
 Connection[] connections;
 JobManager jobMan;
+Executor exec;
+
+void createExecutor(JobManager jobMan)
+{
+	writeln("Creating executor...");
+	exec = new Executor(jobMan);
+	writeln("Starting Executor thread...");
+	exec.start();
+	writeln("Executor thread started.");
+}
 
 void createJobManager(Database db)
 {
+	writeln("Creating JobManager...");
 	jobMan = new JobManager(db);
+	writeln("JobManager created.");
 }
 
 void startServer(Database db, ushort port, string addr)
 {
 	writeln("Starting server on port ", port, " with database '", db.filename , "'...");
 
-	writeln("Creating JobManager...");
 	createJobManager(db);
-	writeln("JobManager created.");
+	createExecutor(jobMan);
 
 	AddressInfo addrInfo = AddressInfo();
 	addrInfo.family = AddressFamily.INET;

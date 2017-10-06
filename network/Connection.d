@@ -3,7 +3,7 @@ module network.Connection;
 import core.thread: Thread;
 import std.socket : Socket;
 import std.stdio : writeln;
-import jobs.JobManager;
+import jobs.JobManager : JobManager;
 
 class Connection : Thread
 {

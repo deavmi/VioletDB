@@ -16,5 +16,6 @@ class JobManager
 	void addJob(Job job)
 	{
 		//add job here
+		//append to jobs array
 	}
 }
