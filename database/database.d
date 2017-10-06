@@ -4,6 +4,9 @@ import std.stdio : File, writeln;
 import database.general;
 import database.types;
 import database.keys;
+import misc.output;
+
+string serviceName = "Database";
 
 class Database
 {
@@ -26,6 +29,11 @@ class Database
 
 	void addKey(string name, string type)
 	{
+
+		//debug
+		println(serviceName, "Begin addkey procedure.");
+		//end debug
+
 		//are there (or are there not) bytes in the file
 		bool isEmpty = isDBEmpty(filename);
 
@@ -112,7 +120,10 @@ class Database
 		db = File(filename, "wb");
 		db.rawWrite(data);
 		db.close();
-		
+
+		//debug
+		println(serviceName, "addItem finished");
+		//end debug
 
 	}
 

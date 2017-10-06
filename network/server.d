@@ -6,6 +6,9 @@ import std.stdio : writeln;
 import network.Connection : Connection;
 import jobs.JobManager : JobManager;
 import jobs.Executor : Executor;
+import misc.output;
+
+string serviceName = "Server";
 
 Connection[] connections;
 JobManager jobMan;
@@ -13,23 +16,26 @@ Executor exec;
 
 void createExecutor(JobManager jobMan)
 {
-	writeln("Creating executor...");
+	println(serviceName,"Creating executor...");
 	exec = new Executor(jobMan);
-	writeln("Starting Executor thread...");
+	println(serviceName,"Starting Executor thread...");
 	exec.start();
-	writeln("Executor thread started.");
+	println(serviceName,"Executor thread started.");
 }
 
 void createJobManager(Database db)
 {
-	writeln("Creating JobManager...");
+	println(serviceName,"Creating JobManager...");
 	jobMan = new JobManager(db);
-	writeln("JobManager created.");
+	println(serviceName,"JobManager created.");
 }
 
 void startServer(Database db, ushort port, string addr)
 {
-	writeln("Starting server on port ", port, " with database '", db.filename , "'...");
+	//I need std.conv for the below thing
+	//println(serviceName,"Starting server on port ", port, " with database '", db.filename , "'...");
+
+	println(serviceName, "Starting server...");
 
 	createJobManager(db);
 	createExecutor(jobMan);
@@ -41,15 +47,15 @@ void startServer(Database db, ushort port, string addr)
 	Socket servSock = new Socket(addrInfo);
 	servSock.bind(parseAddress(addr, port));
 	servSock.listen(1); //what is the backlog? How many connectiosn can be qeued?
-	writeln("Waiting for connections...");
+	println(serviceName,"Waiting for connections...");
 	while (true)
 	{
 		Socket clientSock = servSock.accept();
-		writeln("New connection: ", clientSock);
+		println(serviceName,"New connection: "~clientSock.toString);
 		Connection conn = new Connection(clientSock, jobMan);
 		connections[connections.length++] = conn;
 		conn.start();
-		writeln("Connection object spawned");
+		println(serviceName,"Connection object spawned");
 	}
 
 }
