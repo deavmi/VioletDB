@@ -18,9 +18,10 @@ class Connection : Thread
 
         void doWork()
         {
+		writeln("Client thread running...");
                 while(true)
                 {
-                        writeln("Working working...");
+                        //just hang here for now
                 }
         }
 
