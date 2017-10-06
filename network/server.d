@@ -1,33 +1,11 @@
 module network.server;
 
 import std.socket;
-import core.thread;
 import database.database;
 import std.stdio;
+import network.Connection;
 
 Connection[] connections;
-
-class Connection : Thread
-{
-
-	Socket client;
-
-	this(Socket client)
-	{
-		//this.client = client;
-		super(&doWork);
-		this.client = client;
-	}
-
-	void doWork()
-	{
-		while(true)
-		{
-			writeln("Working working...");
-		}
-	}
-
-}
 
 void startServer(Database db, ushort port)
 {
