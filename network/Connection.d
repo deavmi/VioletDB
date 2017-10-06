@@ -4,7 +4,9 @@ import core.thread: Thread;
 import std.socket : Socket;
 import std.stdio : writeln;
 import jobs.JobManager : JobManager;
-import misc.output;
+import misc.out2 : prettyStr;
+
+alias ps = prettyStr;
 
 string serviceName = "Connection";
 
@@ -24,7 +26,7 @@ class Connection : Thread
 
         void doWork()
         {
-		println(serviceName, "Client thread running...");
+		writeln(ps(serviceName, "Client thread running..."));
                 while(true)
                 {
                         //just hang here for now

@@ -2,34 +2,50 @@ module database.types;
 
 uint getSpaceForType(string type)
 {
+	uint typeSize = 0;
 	if (type == "string")
 	{
-		return 1; //so far just the null-terminator
+		typeSize = 1; //so far just the null-terminator
 	}
-	else if (type == "byte")
+	else if (type == "byte" || type == "ubyte")
 	{
-		return 1;
+		typeSize = 1;
+	}
+	else if (type == "short" || type == "ushort")
+	{
+		typeSize = 2;
+	}
+	else if (type == "int" || type == "uint")
+	{
+		typeSize = 4;
+	}
+	else if (type == "ulong" || type == "long")
+	{
+		typeSize = 8;
 	}
 	else
 	{
 		//effing compiler
-		return 0;
+		typeSize = 0;
 	}
+	return typeSize;
 }
 
 ubyte getTypeID(string type)
 {
+	ubyte typeID = 0;
 	if (type == "string")
 	{
-		return 1;
+		typeID = 1;
 	}
 	else if (type == "byte")
 	{
-		return 2;
+		typeID = 2;
 	}
 	else
 	{
 		//effing compiler
-		return 0;
+		typeID = 0;
 	}
+	return typeID;
 }

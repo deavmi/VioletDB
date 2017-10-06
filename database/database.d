@@ -4,9 +4,11 @@ import std.stdio : File, writeln;
 import database.general;
 import database.types;
 import database.keys;
-import misc.output;
+import misc.out2 : prettyStr;
 
 string serviceName = "Database";
+
+alias ps = prettyStr;
 
 class Database
 {
@@ -31,7 +33,7 @@ class Database
 	{
 
 		//debug
-		println(serviceName, "Begin addkey procedure.");
+		writeln(prettyStr(serviceName, "Begin addkey procedure."));
 		//end debug
 
 		//are there (or are there not) bytes in the file
@@ -116,17 +118,14 @@ class Database
 			pos++;
 		}
 
-//		writeln("fok");
-
 		//Write back to database
 		db = File(filename, "wb");
 		db.rawWrite(data);
 		db.close();
 
 		//debug
-		println(serviceName, "addItem finished");
+		writeln(prettyStr(serviceName, "addItem finished"));
 		//end debug
-		writeln("additem done");
 
 	}
 
