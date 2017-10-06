@@ -16,6 +16,14 @@ class Database
 		this.filename = filename;
 	}
 
+	void deleteDatabase()
+	{
+	}
+
+	void wipeDatabase()
+	{
+	}
+
 	void addKey(string name, string type)
 	{
 		//are there (or are there not) bytes in the file
