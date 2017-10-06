@@ -23,12 +23,12 @@ void main()
 		ushort port = 25515; //use std.conv to ask user for this
 		Database db = new Database(filename);
 		db.addKey("nasme","string"); //testing code
-		writeln("[" ~ serviceName ~ "] Starting server component...");
+		writeln(prettyStr(serviceName,"Starting server component..."));
 		startServer(db, port, "0.0.0.0");
 	}
 	else
 	{
-		writeln("["~serviceName~"] File '" ~ filename ~ "' not found.");
+		writeln(prettyStr(serviceName,"File '" ~ filename ~ "' not found."));
 	}
 
 }
