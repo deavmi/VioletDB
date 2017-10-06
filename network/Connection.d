@@ -3,17 +3,20 @@ module network.Connection;
 import core.thread: Thread;
 import std.socket : Socket;
 import std.stdio : writeln;
+import jobs.JobManager;
 
 class Connection : Thread
 {
 
         Socket client;
+	JobManager jobMan;
 
-        this(Socket client)
+        this(Socket client, JobManager jobMan)
         {
                 //this.client = client;
                 super(&doWork);
                 this.client = client;
+		this.jobMan = jobMan;
         }
 
         void doWork()
