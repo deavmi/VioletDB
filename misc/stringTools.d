@@ -8,5 +8,3 @@ string chomp(string str) //if only I knew where this was in std package
 	strBs.length--;
 	return cast(string)strBs;	
 }
-
-
