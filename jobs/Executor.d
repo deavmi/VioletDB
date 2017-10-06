@@ -20,6 +20,7 @@ class Executor : Thread
 	void doWork()
 	{
 		//do work here
+		writeln();
 		writeln("Executor running...");
 		while (true)
 		{
