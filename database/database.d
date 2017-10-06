@@ -116,6 +116,8 @@ class Database
 			pos++;
 		}
 
+//		writeln("fok");
+
 		//Write back to database
 		db = File(filename, "wb");
 		db.rawWrite(data);
@@ -124,6 +126,7 @@ class Database
 		//debug
 		println(serviceName, "addItem finished");
 		//end debug
+		writeln("additem done");
 
 	}
 

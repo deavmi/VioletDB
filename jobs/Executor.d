@@ -3,6 +3,9 @@ module jobs.Executor;
 import jobs.JobManager :JobManager;
 import core.thread : Thread;
 import std.stdio : writeln;
+import misc.output;
+
+string serviceName = "Executor";
 
 class Executor : Thread
 {
@@ -20,8 +23,7 @@ class Executor : Thread
 	void doWork()
 	{
 		//do work here
-		writeln();
-		writeln("Executor running...");
+		println(serviceName,"Executor running...");
 		while (true)
 		{
 			//chill (not implemented yet)

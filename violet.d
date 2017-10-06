@@ -3,7 +3,7 @@ import database.database : Database;
 import misc.stringTools : chomp;
 import network.server : startServer;
 import std.file : exists;
-import misc.output;
+import misc.output : createPrettyString;
 
 string versionStr = "0.0.1 (Working Hard)";	
 
@@ -22,17 +22,17 @@ void main()
 		//testing code
 		Database db = new Database(filename);
 		db.addKey("nasme","string");
-		println(serviceName, "Starting server component...");
+		write(createPrettyString(serviceName, "Starting server component...",true));
 		startServer(db, port, "0.0.0.0");
 	}
 	else
 	{
-		println(serviceName,"File '" ~ filename ~ "' not found.");
+		write(createPrettyString(serviceName,"File '" ~ filename ~ "' not found.",true));
 	}
 
 }
 
 void welcome()
 {
-	println(serviceName,"Welcome to VioletDB v"~versionStr~"!");
+	write(createPrettyString(serviceName,"Welcome to VioletDB v"~versionStr~"!",true));
 }

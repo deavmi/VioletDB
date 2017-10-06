@@ -2,11 +2,11 @@ module network.server;
 
 import std.socket;
 import database.database : Database;
-import std.stdio : writeln;
+import std.stdio : writeln, write;
 import network.Connection : Connection;
 import jobs.JobManager : JobManager;
 import jobs.Executor : Executor;
-import misc.output;
+import misc.output : createPrettyString;
 
 string serviceName = "Server";
 
@@ -16,30 +16,27 @@ Executor exec;
 
 void createExecutor(JobManager jobMan)
 {
-	println(serviceName,"Creating executor...");
+	write(createPrettyString(serviceName,"Creating executor...",true));
 	exec = new Executor(jobMan);
-	println(serviceName,"Starting Executor thread...");
+	write(createPrettyString(serviceName,"Starting Executor thread...",true));
 	exec.start();
-	println(serviceName,"Executor thread started.");
+	write(createPrettyString(serviceName,"Executor thread started.",true));
 }
 
 void createJobManager(Database db)
 {
-	println(serviceName,"Creating JobManager...");
+	write(createPrettyString(serviceName,"Creating JobManager...",true));
 	jobMan = new JobManager(db);
-	println(serviceName,"JobManager created.");
+	write(createPrettyString(serviceName,"JobManager created.",true));
 }
 
 void startServer(Database db, ushort port, string addr)
 {
 	//I need std.conv for the below thing
 	//println(serviceName,"Starting server on port ", port, " with database '", db.filename , "'...");
-
-	println(serviceName, "Starting server...");
-
+	write(createPrettyString(serviceName, "Starting server...",true));
 	createJobManager(db);
 	createExecutor(jobMan);
-
 	AddressInfo addrInfo = AddressInfo();
 	addrInfo.family = AddressFamily.INET;
 	addrInfo.protocol = ProtocolType.TCP; //try out RAW
@@ -47,15 +44,15 @@ void startServer(Database db, ushort port, string addr)
 	Socket servSock = new Socket(addrInfo);
 	servSock.bind(parseAddress(addr, port));
 	servSock.listen(1); //what is the backlog? How many connectiosn can be qeued?
-	println(serviceName,"Waiting for connections...");
+	write(createPrettyString(serviceName,"Waiting for connections...",true));
 	while (true)
 	{
 		Socket clientSock = servSock.accept();
-		println(serviceName,"New connection: "~clientSock.toString);
+		write(createPrettyString(serviceName,"New connection: "~clientSock.toString,true));
 		Connection conn = new Connection(clientSock, jobMan);
 		connections[connections.length++] = conn;
 		conn.start();
-		println(serviceName,"Connection object spawned");
+		write(createPrettyString(serviceName,"Connection object spawned",true));
 	}
 
 }
