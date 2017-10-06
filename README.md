@@ -8,8 +8,10 @@ Database software but each time you run it it gets slower and slower  ~meme
 
 Yes, for some reason I am using Windows today. Hate this thing. But it works good with D.
 
+There's just too many files now.
+
 ````
-dmd violet.d database/* network/* misc/* -O violet.exe
+bash build.sh
 ````
 
 # Running
