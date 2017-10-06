@@ -2,7 +2,7 @@ import std.stdio : writeln, write, readln;
 import database.database : Database;
 import misc.stringTools : chomp;
 import network.server : startServer;
-import std.File : exists;
+import std.file : exists;
 
 void main()
 {

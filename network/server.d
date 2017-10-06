@@ -1,7 +1,7 @@
 module network.server;
 
 import std.socket;
-import core.Thread;
+import core.thread;
 import database.database;
 import std.stdio;
 
