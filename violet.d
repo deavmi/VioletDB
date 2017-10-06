@@ -19,7 +19,7 @@ void main()
 		Database db = new Database(filename);
 		db.addKey("nasme","string");
 		writeln("ey");
-		startServer(db, port);
+		startServer(db, port, "0.0.0.0");
 	}
 	else
 	{
